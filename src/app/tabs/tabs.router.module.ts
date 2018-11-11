@@ -5,6 +5,8 @@ import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { ContactPage } from '../contact/contact.page';
+import { SubpagePage } from '../subpage/subpage.page';
+import { PagetwoPage } from '../pagetwo/pagetwo.page';
 
 const routes: Routes = [
   {
@@ -22,6 +24,16 @@ const routes: Routes = [
         component: HomePage
       },
       {
+        path: 'subpage',
+        outlet: 'home',
+        component: SubpagePage
+      },
+      {
+        path: 'pagetwo',
+        outlet: 'home',
+        component: PagetwoPage
+      },
+      {
         path: 'about',
         outlet: 'about',
         component: AboutPage
@@ -37,7 +49,9 @@ const routes: Routes = [
     path: '',
     redirectTo: '/tabs/(home:home)',
     pathMatch: 'full'
-  }
+  },
+  { path: 'about', component: AboutPage },
+
 ];
 
 @NgModule({
