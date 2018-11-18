@@ -29,8 +29,18 @@ const routes: Routes = [
         component: SubpagePage
       },
       {
+        path: 'subpage',
+        outlet: 'about',
+        component: SubpagePage
+      },
+      {
         path: 'pagetwo',
         outlet: 'home',
+        component: PagetwoPage
+      },
+      {
+        path: 'pagetwo',
+        outlet: 'about',
         component: PagetwoPage
       },
       {
