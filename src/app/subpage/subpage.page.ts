@@ -3,6 +3,7 @@ import { ModalController, Platform } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Crop } from '@ionic-native/crop/ngx';
+import { TouchID } from '@ionic-native/touch-id/ngx';
 
 @Component({
   selector: 'app-subpage',
@@ -16,6 +17,7 @@ export class SubpagePage implements OnInit {
     private camera: Camera,
     private crop: Crop,
     private platform: Platform,
+    private touchId: TouchID,
   ) { }
 
   ngOnInit() {
@@ -66,7 +68,20 @@ export class SubpagePage implements OnInit {
       // Handle error
       console.error('Error:', err);
     });
+  }
 
+  openTouchId() {
+    this.touchId.isAvailable()
+      .then(
+        res => console.log('TouchID is available!'),
+        err => console.error('TouchID is not available', err)
+      );
+
+    this.touchId.verifyFingerprint('Scan your fingerprint please')
+      .then(
+        res => console.log('Ok', res),
+        err => console.error('Error', err)
+      );
   }
 
 }
